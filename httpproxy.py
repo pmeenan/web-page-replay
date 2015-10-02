@@ -275,11 +275,11 @@ class HttpProxyServer(SocketServer.ThreadingMixIn,
   # SocketServer.TCPServer (the parent of BaseHTTPServer.HTTPServer).
   # Since we're intercepting many domains through this single server,
   # it is quite possible to get more than 5 concurrent requests.
-  request_queue_size = 256
+  request_queue_size = 8192
 
   # The number of simultaneous connections that the HTTP server supports. This
   # is primarily limited by system limits such as RLIMIT_NOFILE.
-  connection_limit = 500
+  connection_limit = 400000
 
   # Allow sockets to be reused. See
   # http://svn.python.org/projects/python/trunk/Lib/SocketServer.py for more
