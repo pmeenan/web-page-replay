@@ -154,7 +154,7 @@ class HttpArchiveHandler(BaseHTTPServer.BaseHTTPRequestHandler):
       self.end_headers()
 
       for chunk, delay in zip(response.response_data, delays):
-        if delay:
+        if delay and self.server.use_delays:
           self.wfile.flush()
           time.sleep(delay / 1000.0)
         if is_chunked:
